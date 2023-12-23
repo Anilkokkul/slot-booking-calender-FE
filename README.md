@@ -21,5 +21,5 @@ This is the frontend application for a slot booking calendar system. Users can v
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/slot-booking-frontend.git
+   git clone https://github.com/Anilkokkul/slot-booking-calender-FE.git
    ```
