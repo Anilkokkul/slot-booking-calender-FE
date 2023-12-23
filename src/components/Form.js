@@ -13,7 +13,6 @@ const Form = () => {
   const navigate = useNavigate();
   const [slot, setSlot] = useState({});
   const { id } = useParams();
-  console.log(slot);
   const dateTime = new Date(slot.startTime);
   const options = {
     timeZone: "UTC",
@@ -59,14 +58,14 @@ const Form = () => {
       instance
         .put(`/slot/booking/${id}`, { ...values, available: false })
         .then((data) => {
+          const time = data.data.slotBooked.startTime;
           toastSuccess(data.data.message);
+          navigate(`/invitee/${time}`);
         })
         .catch((data) => {
           errorToast(data.response.data.message);
         });
-      console.log("Form submitted with values:", values);
       resetForm();
-      navigate("/");
     },
   });
 

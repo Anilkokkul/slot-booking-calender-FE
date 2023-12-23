@@ -7,6 +7,7 @@ import Form from "./components/Form";
 import Main from "./Pages/Main";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Booked from "./components/Booked";
 
 export const instance = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />}></Route>
         <Route path="/user/:id" element={<Form />}></Route>
+        <Route path="/invitee/:time" element={<Booked />}></Route>
       </Routes>
       <ToastContainer />
     </BrowserRouter>

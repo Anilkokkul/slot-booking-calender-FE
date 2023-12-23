@@ -47,3 +47,12 @@
   font-size: 20px;
   min-width: 19px;
 }
+.booked svg {
+  font-size: 50px;
+  min-width: 39px;
+  line-height: 40px;
+}
+.booked {
+  font-weight: 900;
+  margin: 0;
+}
