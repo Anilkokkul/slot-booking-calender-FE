@@ -1,38 +1,49 @@
-.App {
-  text-align: center;
+.weekend-tile {
+  border-radius: 50% !important;
+  color: red !important;
+}
+.weekday-tile {
+  border-radius: 50% !important;
+}
+.reactCalender {
+  border: none !important;
+  /* width: 400px !important; */
+  /* height: 400px !important; */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.main {
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 8px 0px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.slot-container {
+  opacity: 0;
+  transition: opacity 0.9s ease-in-out;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.slot-container.show-slots {
+  opacity: 1;
+}
+.pic {
+  border-radius: 50%;
+}
+.slotbook {
+  border-right: 1px solid #dee2e6;
+}
+
+#sloth:hover {
+  background-color: green;
+}
+.details {
+  margin-top: 3px;
   display: flex;
-  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 5px;
 }
-
-.App-link {
-  color: #61dafb;
+.details > p {
+  margin: 0;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.details svg {
+  font-size: 20px;
+  min-width: 19px;
 }
