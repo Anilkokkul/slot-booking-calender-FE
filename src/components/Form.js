@@ -72,8 +72,8 @@ const Form = () => {
 
   return (
     <>
-      <div className="mt-5 d-flex justify-content-center align-content-center flex-md-row flex-column form-group col-8 mx-auto border rounded-4 overflow-hidden">
-        <div className="slotbook p-4 px-md-4 px-5 col-lg-6">
+      <div className="mt-5 d-flex justify-content-center align-content-center flex-md-row flex-column form-group col-md-8 col-11 mx-auto border rounded-4 overflow-hidden">
+        <div className="slotbook p-sm-4 p-3 px-md-4 px-sm-5 col-lg-6">
           <img
             src="/pic.jpg"
             alt="pic"
@@ -100,7 +100,7 @@ const Form = () => {
         </div>
         <form
           onSubmit={formik.handleSubmit}
-          className="col-md-6 col-md-6 bg-light p-4 px-5"
+          className="col-md-6 col-md-6 bg-light p-sm-4 p-3 px-md-4 px-sm-5"
         >
           <h1 className="text-center mt-3">Enter your Details</h1>
           <div className="mt-3">

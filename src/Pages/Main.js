@@ -55,7 +55,7 @@ function Main() {
   return (
     <div className="App">
       <h1 className="text-center my-2">Slot Booking Calender</h1>
-      <div className=" main mt-3 col-xl-9 col-sm-12 col-md-11 col-lg-10 flex-lg-row flex-column mx-auto d-flex gap-4 justify-content-center align-content-center border rounded-4 p-5 h-75">
+      <div className=" main mt-3 col-xl-9 col-sm-12 col-md-11 col-lg-10 col-11 flex-lg-row flex-column mx-auto d-flex gap-4 justify-content-center align-content-center border rounded-3 p-sm-5 p-2 h-75">
         <div className=" p-3 col-lg-4 border rounded main">
           <img
             src="/pic.jpg"
@@ -73,7 +73,7 @@ function Main() {
             <p>Web conferencing details provided upon confirmation.</p>
           </div>
         </div>
-        <div className="d-flex justify-content-center gap-3">
+        <div className="d-flex align-content-center gap-3 flex-column flex-md-row">
           <div className=" text-center">
             <h4 className=" border-bottom">Select Date & Time</h4>
             <div>
