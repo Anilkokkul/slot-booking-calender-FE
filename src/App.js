@@ -8,6 +8,7 @@ import Main from "./Pages/Main";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Booked from "./components/Booked";
+import FailurePayment from "./components/FailurePayment";
 
 export const instance = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,
@@ -20,6 +21,7 @@ function App() {
         <Route path="/" element={<Main />}></Route>
         <Route path="/user/:id" element={<Form />}></Route>
         <Route path="/invitee/:time" element={<Booked />}></Route>
+        <Route path="/failure" element={<FailurePayment />}></Route>
       </Routes>
       <ToastContainer />
     </BrowserRouter>

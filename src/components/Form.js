@@ -7,11 +7,16 @@ import { IoEarth } from "react-icons/io5";
 import { useParams, useNavigate } from "react-router-dom";
 import { CiCalendarDate } from "react-icons/ci";
 import { instance } from "../App";
-import { errorToast, toastSuccess } from "./toastify/toasts";
+import RenderRazorpay from "./RenderRazarpay";
+import { errorToast } from "./toastify/toasts";
 
 const Form = () => {
   const navigate = useNavigate();
   const [slot, setSlot] = useState({});
+  const [orderId, setOrderId] = useState(null);
+  const [keyId, setKeyId] = useState(null);
+  const [displayRazorpay, setDisplayRazorpay] = useState(false);
+  const [formData, setFormData] = useState(null);
   const { id } = useParams();
   const dateTime = new Date(slot.startTime);
   const options = {
@@ -24,6 +29,21 @@ const Form = () => {
     minute: "numeric",
   };
 
+  const getOrderId = () => {
+    instance
+      .post("/order")
+      .then((data) => {
+        setOrderId(data.data.order_id);
+        setKeyId(data.data.key_id);
+        // console.log("Got order ID : ", data.data);
+      })
+      .catch((data) => {
+        console.error("Failed to create an Order Id : ", data);
+      });
+  };
+  useEffect(() => {
+    getOrderId();
+  }, []);
   useEffect(() => {
     instance
       .get("/slots")
@@ -31,12 +51,17 @@ const Form = () => {
         const slot = data.data.Slots.filter((slot) => {
           return slot._id === id;
         });
+        if (slot[0].available === false) {
+          errorToast("This Slot is not available Please select another slot");
+          navigate("/");
+        }
+
         setSlot(slot[0]);
       })
       .catch((data) => {
         console.log(data);
       });
-  }, [id]);
+  }, [id, navigate]);
 
   const formattedDateTime = dateTime.toLocaleString(undefined, options);
   const formik = useFormik({
@@ -55,16 +80,9 @@ const Form = () => {
         .required("Mobile Number number is required"),
     }),
     onSubmit: (values, { resetForm }) => {
-      instance
-        .put(`/slot/booking/${id}`, { ...values, available: false })
-        .then((data) => {
-          const time = data.data.slotBooked.startTime;
-          toastSuccess(data.data.message);
-          navigate(`/invitee/${time}`);
-        })
-        .catch((data) => {
-          errorToast(data.response.data.message);
-        });
+      getOrderId();
+      setDisplayRazorpay(true);
+      setFormData({ ...values, available: false });
       resetForm();
     },
   });
@@ -157,6 +175,14 @@ const Form = () => {
           </button>
         </form>
       </div>
+      {displayRazorpay && (
+        <RenderRazorpay
+          orderId={orderId}
+          formData={formData}
+          id={id}
+          keyId={keyId}
+        />
+      )}
     </>
   );
 };
