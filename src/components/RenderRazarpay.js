@@ -60,7 +60,7 @@ const RenderRazorpay = ({ orderId, formData, id, keyId }) => {
         orderDetails,
       })
       .then((data) => {
-        console.log(data.response);
+        console.log(data.data);
       })
       .catch((data) => {
         console.log(data.data);
@@ -72,7 +72,7 @@ const RenderRazorpay = ({ orderId, formData, id, keyId }) => {
     name: "Anil Kokkul",
     order_id: orderId,
     handler: (response) => {
-    //   console.log("Payment succeeded");
+      //   console.log("Payment succeeded");
 
       paymentId.current = response.razorpay_payment_id;
 

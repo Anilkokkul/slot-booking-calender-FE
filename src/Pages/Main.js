@@ -9,15 +9,18 @@ import Calendar from "react-calendar";
 function Main() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [showSlots, setShowSlots] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [slots, setSlots] = useState([]);
   // console.log(slots);
 
   useEffect(() => {
+    setLoading(true);
     instance
       .get("/slots")
       .then((data) => {
         // console.log(data.data.Slots);
         setSlots(data.data.Slots);
+        setLoading(false);
       })
       .catch((data) => {
         console.log(data);
@@ -96,6 +99,7 @@ function Main() {
               <div className="text-center">
                 <h2>Available Slots</h2>
                 <SlotList
+                  loading={loading}
                   selectedDate={selectedDate}
                   filteredSlots={filteredSlots}
                 />
