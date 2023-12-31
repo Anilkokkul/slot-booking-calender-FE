@@ -10,9 +10,9 @@ function SlotList({ filteredSlots, loading }) {
   return (
     <div className=" d-flex justify-content-center align-content-center">
       {loading ? (
-        <div className=" text-center text-info fs-5">
+        <p className=" text-center text-info">
           Checking available slots for the day
-        </div>
+        </p>
       ) : (
         <ul>
           {filteredSlots.length > 0 ? (
